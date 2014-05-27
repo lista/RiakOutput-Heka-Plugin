@@ -3,7 +3,7 @@ package riak
 import (
 	"bytes"
 	"code.google.com/p/go-uuid/uuid"
-	"encoding/json"
+	//"encoding/json"
 	. "github.com/mozilla-services/heka/message"
 	gs "github.com/rafrombrc/gospec/src/gospec"
 	"strings"
