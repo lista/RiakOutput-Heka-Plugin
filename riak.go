@@ -462,7 +462,7 @@ func (o *RiakOutput) handleMessage(pack *PipelinePack, outBytes *[]byte) (err er
 		Type:                 o.typeName,
 		Timestamp:            pack.Message.Timestamp,
 		TimestampFormat:      o.timestamp,
-		ESIndexFromTimestamp: o.esIndexFromTimestamp,
+		RiakIndexFromTimestamp: o.riakIndexFromTimestamp,
 		Id:                   o.id,
 	}
 
@@ -488,7 +488,7 @@ func (o *RiakOutput) handleMessage(pack *PipelinePack, outBytes *[]byte) (err er
 // Runs in a separate goroutine, waits for buffered data on the committer
 // channel, bulk index it out to the Riak cluster, and puts the now empty buffer on
 // the return channel for reuse.
-func (o *ERiakOutput) committer(wg *sync.WaitGroup) {
+func (o *RiakOutput) committer(wg *sync.WaitGroup) {
 	initBatch := make([]byte, 0, 10000)
 	o.backChan <- initBatch
 	var outBatch []byte
@@ -530,7 +530,7 @@ func interpolateFlag(e *RiakCoordinates, m *message.Message, name string) (inter
 				if fname, ok := m.GetFieldValue(elVal); ok {
 					iSlice[i] = strings.Replace(iSlice[i], element[:elEnd+1], fname.(string), -1)
 				} else {
-					if e.ESIndexFromTimestamp && e.Timestamp != nil {
+					if e.RiakIndexFromTimestamp && e.Timestamp != nil {
 						t = time.Unix(0, *e.Timestamp).UTC()
 					} else {
 						t = time.Now()
