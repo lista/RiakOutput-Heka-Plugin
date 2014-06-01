@@ -80,7 +80,7 @@ func (o *RiakOutput) ConfigStruct() interface{} {
 		FlushCount:           10,
 		Format:               "clean",
 		Timestamp:            "2014-05-05T00:00:00.000Z",
-		Server:               "http://localhost:8098",
+		Server:               "http://localhost:8087",
 		RiakIndexFromTimestamp: false,
 		Id:                   "",
 		HTTPTimeout:	      0,
