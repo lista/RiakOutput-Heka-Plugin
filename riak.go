@@ -59,7 +59,7 @@ type RiakOutputConfig struct {
 	Fields []string
 	// Timestamp format.
 	Timestamp string
-	// Riak server address (default: "http://localhost:8098")
+	// Riak server address (default: "http://localhost:8087")
 	Server string
 	// Use Timestamp value for indexing instead of current time 
 	RiakIndexFromTimestamp bool
@@ -560,7 +560,7 @@ type BulkIndexer interface {
 type HttpBulkIndexer struct {
 	// Protocol (http or https)
 	Protocol string
-	// Host name and port number (default to "localhost:8098")
+	// Host name and port number (default to "localhost:8087")
 	Domain string
 	// Maximum number of documents
 	MaxCount int
