@@ -73,7 +73,7 @@ type RiakOutputConfig struct {
 
 func (o *RiakOutput) ConfigStruct() interface{} {
 	return &RiakOutputConfig{
-		Cluster:              "riak@127.0.0.1",
+		Cluster:              "riak",
 		Index:                "heka-%{2014.05.05}",
 		TypeName:             "message",
 		FlushInterval:        1000,
